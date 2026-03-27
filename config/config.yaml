@@ -5,8 +5,8 @@ app:
 crawler:
   request_interval: 1000 # 请求间隔(毫秒)
   enable_crawler: true # 是否启用爬取新闻功能，如果 false，则直接停止程序
-  use_proxy: false # 是否启用代理，false 时为关闭
-  default_proxy: "http://127.0.0.1:10086"
+  use_proxy: true # 是否启用代理，false 时为关闭
+  default_proxy: "https://sub3.smallstrawberry.com/api/v1/client/subscribe?token=9fe94e4da01a5a6d1509acffef6020df"
 
 # 🔸 daily（当日汇总模式）
 #   • 推送时机：按时推送(默认每小时推送一次)
@@ -46,7 +46,7 @@ notification:
     # 注意：GitHub Actions 执行时间不稳定，时间范围建议至少留足 2 小时
     # 如果想要精准的定时推送，建议使用 Docker 部署在个人服务器上
     time_range:
-      start: "09:00"  # 推送时间窗口开始（北京时间）
+      start: "21:00"  # 推送时间窗口开始（北京时间）
       end: "23:00"    # 推送时间窗口结束（北京时间）
     once_per_day: true  # 每天在时间窗口内只推送一次，如果 false，则窗口内每次执行都推送
     push_record_retention_days: 7  # 推送记录保留天数
@@ -56,7 +56,7 @@ notification:
   # 不然轻则手机上收到奇怪的广告推送，重则存在更严重的安全隐患
   webhooks:
     feishu_url: "" # 飞书机器人的 webhook URL
-    dingtalk_url: "" # 钉钉机器人的 webhook URL
+    dingtalk_url: "https://oapi.dingtalk.com/robot/send?access_token=0a5efb240bce768ad6408649acb5d18f1fd46c5dd077bf95074064f43cc95c53" # 钉钉机器人的 webhook URL
     wework_url: "" # 企业微信机器人的 webhook URL
     telegram_bot_token: "" # Telegram Bot Token
     telegram_chat_id: "" # Telegram Chat ID
@@ -96,6 +96,10 @@ platforms:
     name: "MKT新闻"
   - id: "kaopu"
     name: "靠谱新闻"
+  - id: "google"
+    name: "谷歌"
+  - id: "X"
+    name: "推特"
 
   # === 财经投资类 ===
   - id: "wallstreetcn-hot"
